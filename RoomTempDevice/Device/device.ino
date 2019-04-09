@@ -152,18 +152,18 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (hasIoTHub && hasWifi && hasSensors)
   {
+    Screen.print(HEADER, "Running...");
+
     float t = ReadTemperature();
     float h = ReadHumidity();
 
     char buff[128];
 
-    // replace the following line with your data sent to Azure IoTHub
-    snprintf(buff, 128, "{\"topic\":\"iot\",\"temperature\":30.000000,\"humidity\":29.000000}");
+    // Azure IoTHub payload
+    snprintf(buff, 128, "{\"topic\":\"iot\",\"Temperature\":%f,\"Humidity\":%f}", t, h);
     
     if (DevKitMQTTClient_SendEvent(buff))
-    {
-      Screen.print(HEADER, "Running...");
-      
+    {  
       // Update Screen with sensor data
       char sensorLine[20];
       sprintf(sensorLine, "T:%.2f H:%.2f", t, h);
@@ -172,7 +172,8 @@ void loop() {
     }
     else
     {
-      Screen.print(LINE_1, "Failure...");
+      Screen.print(LINE_1, "Failed to send payload...", true);
+      SetLEDError();
     }
   }else{
     Screen.print(LINE_1, "Error...");
