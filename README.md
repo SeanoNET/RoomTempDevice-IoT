@@ -33,4 +33,4 @@ An example of the payload that will be sent to [IoT Hub](https://azure.microsoft
 
 ## Realtime Dashboard
 
-See [RoomTempDashboard] for a realtime data dashboard
+See [RoomTempDashboard](https://github.com/SeanoNET/RoomTempDashboard) for a realtime dashboard
