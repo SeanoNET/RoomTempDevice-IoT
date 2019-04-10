@@ -1,5 +1,5 @@
 # RoomTempDevice-IoT
-Sends sensor data to Azure IoT Hub at a defined interval
+Sends sensor data from a MXChip AZ3166 IoT Devkit to Azure IoT Hub at a defined interval
 
 ![](Docs/RoomTempDevice-IoT.png)
 
